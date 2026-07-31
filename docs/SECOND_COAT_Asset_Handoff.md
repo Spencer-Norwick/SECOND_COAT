@@ -7,8 +7,8 @@
 
 ## Files
 
-1. `SECOND_COAT_Overlay_Glitch_SUBMISSION.gif` — preferred, larger primary asset
-2. `SECOND_COAT_Overlay_Glitch_BACKUP.gif` — smaller fallback only if the large GIF creates a loading or rendering problem
+1. `SECOND_COAT_Overlay_Glitch.gif` — full-resolution primary asset
+2. `SECOND_COAT_Overlay_Glitch_Submission.gif` — smaller submission version
 3. `SECOND_COAT_Civic_Render.png` — static civic/default-overlay render
 4. `SECOND_COAT_Classified_Render.png` — static Kapala-Halo/authorized render
 
