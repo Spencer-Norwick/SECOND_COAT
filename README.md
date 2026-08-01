@@ -77,8 +77,8 @@ The original essay is also published at
   script
 - `source/SECOND_COAT_Final_Master.md` — final editable source for both document
   renders
-- `scripts/render_SECOND_COAT.py` — ReportLab formatter for the paired PDF and
-  static PNGs
+- [`scripts/render_second_coat.py`](scripts/render_second_coat.py) — ReportLab
+  formatter for the paired PDF and static PNGs
 - `scripts/build_SECOND_COAT_gif.py` — deterministic Pillow-based GIF builder
 - `docs/SECOND_COAT_Asset_Handoff.md` — asset and submission handoff
 - `docs/SECOND_COAT_Submission_Copy.md` — submission-form copy
@@ -87,7 +87,13 @@ The original essay is also published at
 
 The earlier website demo is intentionally not included.
 
-## Rebuilding the document renders
+## Document formatter: `render_second_coat.py`
+
+[`render_second_coat.py`](scripts/render_second_coat.py) is the complete source
+for the twin-document layout. It parses the civic and classified sections from
+the final Markdown master, fits both documents into matched page geometry,
+creates the two-page PDF, converts each page to a 1200 × 1500 PNG, and validates
+the generated files.
 
 Requires Python 3.11 or newer, the packages in `requirements.txt`,
 [Poppler](https://poppler.freedesktop.org/)'s `pdftoppm`, and DejaVu Sans
@@ -97,7 +103,7 @@ automatically; custom font paths can be supplied with
 
 ```bash
 python -m pip install -r requirements.txt
-ALLOW_OVER_1000=1 python scripts/render_SECOND_COAT.py
+ALLOW_OVER_1000=1 python scripts/render_second_coat.py
 ```
 
 `ALLOW_OVER_1000=1` is required because the final paired artifact exceeds the
