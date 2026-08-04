@@ -44,9 +44,10 @@ observer-specific reality. I chose to tell the story through two communiqués
 occupying the same document: a harmless civic notice for default observers and
 a restricted MPD bulletin for viewers with sufficient clearance. Keeping
 SECOND COAT ambiguous—it is unknown whether it is a person, group, method, or
-police-imposed label—and presenting the artifact as a snapshot of the
-bureaucratic machine rather than simply an illustration gave the project more
-mystery and made it feel native to Zoothesia's AR-mediated environment.
+police-imposed label—and presenting the artifact as an animated glimpse of the
+bureaucratic machine rather than simply a photo or illustration, makes it feel 
+native to Zoothesia's AR-mediated environment and brings the viewer into that
+world.
 
 I developed the institutional logic, terminology, canon choices, and final
 prose, using an LLM to research lore continuity, stress-test the AR mechanism,
@@ -58,7 +59,7 @@ variable-opacity inserts, and brief registration failures make the transition
 feel like an overlay system losing control. I reviewed and revised the outputs
 throughout and made all creative and editorial decisions.
 
-The original essay is also published at
+The original project writeup is also published at
 [Slacker's Muse](https://slackersmuse.com/posts/second-coat/).
 
 ## Civic render
@@ -71,27 +72,25 @@ The original essay is also published at
 
 ## Repository contents
 
-- `assets/final/` — the paired PDF, civic and classified renders,
-  full-resolution animation, submission-sized animation, and social image
+- `assets/final/` — the paired civic and classified renders in PNG and PDF format,
+  full-resolution gif, submission-sized gif, and social image (for link cards, etc.)
 - `assets/source/` — source images used as transition material by the animation
-  script
-- `source/SECOND_COAT_Final_Master.md` — final editable source for both document
-  renders
+  script, repurposed from art on the [Protocolized](https://protocolized.io/) site.
+- `source/SECOND_COAT_Final_Master.md` — final editable source copy for both document
+  renders, fed into document formatting script.
 - [`scripts/render_second_coat.py`](scripts/render_second_coat.py) — ReportLab
   formatter for the paired PDF and static PNGs
-- `scripts/build_SECOND_COAT_gif.py` — deterministic Pillow-based GIF builder
+- `scripts/build_SECOND_COAT_gif.py` — deterministic Pillow-based GIF builder with tunable parameters
 - `docs/SECOND_COAT_Asset_Handoff.md` — asset and submission handoff
 - `docs/SECOND_COAT_Submission_Copy.md` — submission-form copy
 - `docs/Zoothesia_Canon_Dictionary_and_Trainverse_Crosswalk.md` — working canon
   reference used during development
 
-The earlier website demo is intentionally not included.
-
 ## Document formatter: `render_second_coat.py`
 
-[`render_second_coat.py`](scripts/render_second_coat.py) is the complete source
-for the twin-document layout. It parses the civic and classified sections from
-the final Markdown master, fits both documents into matched page geometry,
+[`render_second_coat.py`](scripts/render_second_coat.py) is the formatter
+for the twin documents. It parses the civic and classified sections from
+the final Markdown master, fits both documents into matched page layout,
 creates the two-page PDF, converts each page to a 1200 × 1500 PNG, and validates
 the generated files.
 
