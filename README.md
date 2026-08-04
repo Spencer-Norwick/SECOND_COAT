@@ -50,12 +50,13 @@ mystery and made it feel native to Zoothesia's AR-mediated environment.
 
 I developed the institutional logic, terminology, canon choices, and final
 prose, using an LLM to research lore continuity, stress-test the AR mechanism,
-and copy-edit the paired documents. After finalizing both renders, I used a
-Python script to turn the static documents into an infinite loop with unstable,
-glitching transitions. Displaced document fragments, variable-opacity inserts,
-and brief registration failures make the transition feel like an overlay system
-losing control. I reviewed and revised the outputs throughout and made all
-creative and editorial decisions.
+and copy-edit the paired documents. A Python formatter takes the final Markdown
+master and lays out the matched PDF and 1200 × 1500 civic and classified
+renders. A second Python script turns those static documents into an infinite
+loop with unstable, glitching transitions. Displaced document fragments,
+variable-opacity inserts, and brief registration failures make the transition
+feel like an overlay system losing control. I reviewed and revised the outputs
+throughout and made all creative and editorial decisions.
 
 The original essay is also published at
 [Slacker's Muse](https://slackersmuse.com/posts/second-coat/).
@@ -70,22 +71,50 @@ The original essay is also published at
 
 ## Repository contents
 
-- `assets/final/` — the civic and classified renders, full-resolution animation,
-  submission-sized animation, and social image
+- `assets/final/` — the paired PDF, civic and classified renders,
+  full-resolution animation, submission-sized animation, and social image
 - `assets/source/` — source images used as transition material by the animation
   script
+- `source/SECOND_COAT_Final_Master.md` — final editable source for both document
+  renders
+- [`scripts/render_second_coat.py`](scripts/render_second_coat.py) — ReportLab
+  formatter for the paired PDF and static PNGs
 - `scripts/build_SECOND_COAT_gif.py` — deterministic Pillow-based GIF builder
-- `docs/entry-notes.md` — submission handoff, lore notes, and AI-assistance
-  disclosure
+- `docs/SECOND_COAT_Asset_Handoff.md` — asset and submission handoff
+- `docs/SECOND_COAT_Submission_Copy.md` — submission-form copy
+- `docs/Zoothesia_Canon_Dictionary_and_Trainverse_Crosswalk.md` — working canon
+  reference used during development
 
 The earlier website demo is intentionally not included.
 
-## Rebuilding the animation
+## Document formatter: `render_second_coat.py`
 
-Requires Python 3.11 or newer and [Pillow](https://python-pillow.org/).
+[`render_second_coat.py`](scripts/render_second_coat.py) is the complete source
+for the twin-document layout. It parses the civic and classified sections from
+the final Markdown master, fits both documents into matched page geometry,
+creates the two-page PDF, converts each page to a 1200 × 1500 PNG, and validates
+the generated files.
+
+Requires Python 3.11 or newer, the packages in `requirements.txt`,
+[Poppler](https://poppler.freedesktop.org/)'s `pdftoppm`, and DejaVu Sans
+regular and bold fonts. Common Linux and macOS font locations are detected
+automatically; custom font paths can be supplied with
+`SECOND_COAT_FONT_REGULAR` and `SECOND_COAT_FONT_BOLD`.
 
 ```bash
 python -m pip install -r requirements.txt
+ALLOW_OVER_1000=1 python scripts/render_second_coat.py
+```
+
+`ALLOW_OVER_1000=1` is required because the final paired artifact exceeds the
+formatter's original 1,000-word guardrail. The formatter writes the paired PDF
+and both 1200 × 1500 PNGs to `assets/final/`.
+
+## Rebuilding the animation
+
+After rendering the documents:
+
+```bash
 python scripts/build_SECOND_COAT_gif.py
 ```
 
