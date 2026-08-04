@@ -105,7 +105,7 @@ python -m pip install -r requirements.txt
 ALLOW_OVER_1000=1 python scripts/render_second_coat.py
 ```
 
-`ALLOW_OVER_1000=1` is required because the final paired artifact exceeds the
+`ALLOW_OVER_1000=1` is required when the final paired artifact exceeds the
 formatter's original 1,000-word guardrail. The formatter writes the paired PDF
 and both 1200 × 1500 PNGs to `assets/final/`.
 
